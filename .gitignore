@@ -106,6 +106,9 @@ dist
 # Visual Studio Code
 .vscode
 
+# Package-lock.json
+/package-lock.json
+
 # dependencies
 /node_modules
 /.pnp
