@@ -1,28 +1,35 @@
-import React from "react";
-import { TodoCounter } from "./TodoCounter";
-import { TodoSearch } from "./TodoSearch";
-import { TodoList } from "./TodoList";
-import { TodoItem } from "./TodoItem";
-import { CreateTodoButton } from "./CreateTodoButton";
-//import './App.css';
+import React from 'react';
+import { TodoCounter } from './TodoCounter';
+import { TodoSearch } from './TodoSearch';
+import { TodoList } from './TodoList';
+import { TodoItem } from './TodoItem';
+import { CreateTodoButton } from './CreateTodoButton';
+// import './App.css';
 
-const todos=[
-  {text: "Cortar cebolla", completed: false},
-  {text: "Ir al curso de react", completed: false},
-  {text: "Hacer el almuerzo", completed: false}
-]
+const todos = [
+  { text: 'Cortar cebolla', completed: true },
+  { text: 'Tomar el curso intro a React', completed: false },
+  { text: 'Hacer el almuerzo', completed: true },
+  { text: 'Tomar 7 vasos de agua', completed: false },
+];
 
 function App() {
   return (
     <React.Fragment>
-      <TodoCounter/>
-      <TodoSearch/>
+      <TodoCounter />
+      <TodoSearch />
+
       <TodoList>
-        {todos.map(todo =>(
-          <TodoItem key={todo.text} text={todo.text} />
+        {todos.map(todo => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+          />
         ))}
       </TodoList>
-      <CreateTodoButton/>
+
+      <CreateTodoButton />
     </React.Fragment>
   );
 }
