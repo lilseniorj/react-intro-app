@@ -9,7 +9,7 @@ import { CreateTodoButton } from './CreateTodoButton';
 const todos = [
   { text: 'Cortar cebolla', completed: true },
   { text: 'Tomar el curso intro a React', completed: false },
-  { text: 'Hacer el almuerzo', completed: true },
+  { text: 'Hacer el almuerzo', completed: false },
   { text: 'Tomar 7 vasos de agua', completed: false },
 ];
 
