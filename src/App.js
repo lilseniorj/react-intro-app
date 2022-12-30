@@ -6,21 +6,48 @@ import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 // import './App.css';
 
-const todos = [
+const defaultTodos = [
   { text: 'Cortar cebolla', completed: true },
   { text: 'Tomar el curso intro a React', completed: false },
-  { text: 'Hacer el almuerzo', completed: false },
+  { text: 'Hacer el almuerzo', completed: true },
   { text: 'Tomar 7 vasos de agua', completed: false },
 ];
 
 function App() {
+
+  const [todos, setTodos] = React.useState(defaultTodos);
+  // El estado de nuestra busqueda
+  const [searchValue, setSearchValue] = React.useState('');
+
+  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const totalTodos = todos.length;
+  // Cree una nueva variable en donde guarde las conincidencias con la busqueda
+  let searchedTodos = [];
+
+  // Lógica para filtrar la busqueda de los TODOs
+  if (!searchValue.length >= 1) {
+    searchedTodos = defaultTodos
+  } else {
+    searchedTodos = todos.filter(todo => {
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText);
+    })
+  }
+
   return (
     <React.Fragment>
-      <TodoCounter />
-      <TodoSearch />
+      <TodoCounter
+        total={totalTodos}
+        completed={completedTodos}
+      />
+      <TodoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
 
       <TodoList>
-        {todos.map(todo => (
+        {searchedTodos.map(todo => (
           <TodoItem
             key={todo.text}
             text={todo.text}
