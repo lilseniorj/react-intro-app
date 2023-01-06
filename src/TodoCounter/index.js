@@ -1,11 +1,13 @@
-import React from "react";
+import React from 'react';
+import { TodoContext } from '../TodoContext';
 import './TodoCounter.css';
 
-// Desestructuramos los props que pasamos al componente
-function TodoCounter({ total, completed }){
-  return(
-    <h2 className="TodoCounter"> Has complentado {completed} de {total} ToDos</h2>
-  );
+function TodoCounter() {
+  const { totalTodos: total, completedTodos: completed } = React.useContext(TodoContext);
+
+  return (
+    <h2 className="TodoCounter">Has completado {completed} de {total} TODOs</h2>
+  )
 }
 
 export { TodoCounter };
